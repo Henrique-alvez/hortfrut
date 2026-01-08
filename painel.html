@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<title>Painel Admin</title>
+<link rel="stylesheet" href="admin.css">
+</head>
+<body>
+
+<div class="admin-container">
+
+  <h2>Produtos</h2>
+
+  <div id="listaProdutos"></div>
+
+  <hr>
+
+  <input id="nome" placeholder="Nome do produto">
+  <input id="kg" placeholder="Preço Kg">
+  <input id="un" placeholder="Preço Un">
+  <input id="dz" placeholder="Preço Dz">
+  <input id="cx" placeholder="Preço Cx">
+
+  <button onclick="salvar()">Salvar / Atualizar</button>
+  <button onclick="logout()">Sair</button>
+
+  <div class="admin-footer">Hortifruti Verde Vida ©</div>
+</div>
+
+<script src="admin.js"></script>
+<script>
+if(localStorage.getItem("admin")!=="ok") location.href="admin.html";
+function logout(){
+  localStorage.removeItem("admin");
+  location.href="admin.html";
+}
+</script>
+
+</body>
+</html>
