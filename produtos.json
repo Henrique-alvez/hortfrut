@@ -1,0 +1,26 @@
+{
+  "banana": {
+    "nome": "Banana Prata",
+    "precos": {
+      "Kg": 5.5,
+      "Un": 1.2,
+      "Dz": 12,
+      "Cx": 45
+    }
+  },
+  "maca": {
+    "nome": "Maçã Gala",
+    "precos": {
+      "Kg": 8.9,
+      "Un": 2.2,
+      "Dz": 22
+    }
+  },
+  "tomate": {
+    "nome": "Tomate",
+    "precos": {
+      "Kg": 6.5,
+      "Cx": 52
+    }
+  }
+}
