@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<title>Painel Admin</title>
+<link rel="stylesheet" href="admin.css">
+</head>
+<body>
+
+<header class="top">
+  <div class="brand">
+    <img src="logo.png.jpeg">
+    <h1>Painel Administrativo</h1>
+  </div>
+  <button onclick="logout()">Sair</button>
+</header>
+
+
+<section class="container">
+
+  <h2>Novo / Editar Produto</h2>
+
+  <input id="nome" placeholder="Nome do produto">
+
+  <div class="grid">
+    <input id="kg" placeholder="Preço Kg">
+    <input id="un" placeholder="Preço Un">
+    <input id="dz" placeholder="Preço Dz">
+    <input id="cx" placeholder="Preço Cx">
+  </div>
+
+  <button onclick="salvar()">Salvar Produto</button>
+
+  <h2>Produtos Cadastrados</h2>
+  <div id="lista"></div>
+
+</section>
+
+<script src="admin.js"></script>
+</body>
+</html>

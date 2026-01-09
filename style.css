@@ -1,0 +1,159 @@
+body {
+  margin:0;
+  font-family:Arial;
+  background:#f4f6f2;
+}
+
+header {
+  background:linear-gradient(90deg,#1b5e20,#3e2723);
+  color:#fff;
+  text-align:center;
+  padding:20px;
+}
+
+#produtos {
+  display:grid;
+  grid-template-columns:repeat(auto-fill,minmax(220px,1fr));
+  gap:20px;
+  padding:20px;
+}
+
+.produto {
+  background:#fff;
+  padding:15px;
+  border-radius:14px;
+  box-shadow:0 10px 20px rgba(0,0,0,.15);
+}
+
+.produto h3 { margin:0 0 10px }
+
+.preco {
+  color:#1b5e20;
+  font-weight:bold;
+}
+
+.controle {
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  margin-top:10px;
+}
+
+.controle button {
+  background:#1b5e20;
+  color:#fff;
+  border:0;
+  padding:6px 14px;
+  border-radius:8px;
+  cursor:pointer;
+}
+
+/* BOTÃO DO CARRINHO */
+.cart {
+  position:fixed;
+  bottom:20px;
+  right:20px;
+  background:#1b5e20;
+  color:#fff;
+  padding:14px 22px;
+  border-radius:40px;
+  font-weight:bold;
+  cursor:pointer;
+  box-shadow:0 15px 30px rgba(0,0,0,.35);
+}
+
+.cart span {
+  background:#fff;
+  color:#1b5e20;
+  padding:4px 10px;
+  border-radius:20px;
+  margin-left:6px;
+}
+
+/* MODAL */
+.modal {
+  display:none;
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,.65);
+  justify-content:center;
+  align-items:center;
+  z-index:9999;
+}
+
+.box {
+  background:#fff;
+  width:360px;
+  max-height:85vh;
+  border-radius:20px;
+  padding:20px;
+  position:relative;
+  display:flex;
+  flex-direction:column;
+}
+
+.fechar {
+  position:absolute;
+  top:10px;
+  right:10px;
+  background:#c62828;
+  color:#fff;
+  border:0;
+  width:32px;
+  height:32px;
+  border-radius:50%;
+  cursor:pointer;
+}
+
+#lista {
+  flex:1;
+  overflow-y:auto;
+  margin:10px 0;
+}
+
+#lista p {
+  display:flex;
+  justify-content:space-between;
+  background:#f4f6f2;
+  padding:8px;
+  border-radius:8px;
+  margin-bottom:6px;
+}
+
+#total {
+  font-weight:bold;
+  color:#1b5e20;
+  margin:8px 0;
+}
+
+.box input,
+.box select {
+  padding:10px;
+  margin-bottom:8px;
+  border-radius:8px;
+  border:1px solid #ccc;
+}
+
+.box button:last-child {
+  background:#25d366;
+  color:#fff;
+  border:0;
+  padding:14px;
+  border-radius:14px;
+  font-size:16px;
+  cursor:pointer;
+}
+.topo {
+  display:flex;
+  align-items:center;
+  gap:15px;
+  background:linear-gradient(90deg,#1b5e20,#3e2723);
+  color:#fff;
+  padding:15px 20px;
+}
+
+.logo {
+  height:60px;
+  width:auto;
+  object-fit:contain;
+}

@@ -1,0 +1,120 @@
+body {
+  margin:0;
+  font-family:Arial;
+  background:#0f1f14;
+  color:#fff;
+}
+
+.login-box {
+  max-width:320px;
+  margin:120px auto;
+  background:#1b5e20;
+  padding:25px;
+  border-radius:16px;
+  text-align:center;
+}
+
+.login-box input {
+  width:100%;
+  padding:12px;
+  margin:8px 0;
+  border-radius:10px;
+  border:0;
+}
+
+.login-box button {
+  width:100%;
+  padding:12px;
+  background:#25d366;
+  border:0;
+  border-radius:12px;
+  font-size:16px;
+  color:#fff;
+  cursor:pointer;
+}
+
+.top {
+  background:#1b5e20;
+  padding:15px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+}
+
+.top button {
+  background:#c62828;
+  color:#fff;
+  border:0;
+  padding:8px 14px;
+  border-radius:8px;
+  cursor:pointer;
+}
+
+.container {
+  max-width:900px;
+  margin:auto;
+  padding:20px;
+}
+
+.container input {
+  width:100%;
+  padding:12px;
+  margin:6px 0;
+  border-radius:10px;
+  border:0;
+}
+
+.grid {
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(120px,1fr));
+  gap:10px;
+}
+
+.container button {
+  padding:14px;
+  width:100%;
+  margin-top:10px;
+  border-radius:14px;
+  border:0;
+  background:#25d366;
+  font-size:16px;
+  color:#fff;
+  cursor:pointer;
+}
+
+.card {
+  background:#1c1c1c;
+  padding:15px;
+  border-radius:14px;
+  margin-top:10px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+}
+
+.card button {
+  margin-left:5px;
+  padding:6px 10px;
+  border-radius:8px;
+  border:0;
+  cursor:pointer;
+}
+
+.card .edit { background:#ff9800; }
+.card .del { background:#c62828; color:#fff; }
+
+.logo-admin {
+  max-width:140px;
+  margin-bottom:15px;
+}
+
+.brand {
+  display:flex;
+  align-items:center;
+  gap:12px;
+}
+
+.brand img {
+  height:45px;
+}
+

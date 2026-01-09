@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<title>Admin - Login</title>
+<link rel="stylesheet" href="admin.css">
+</head>
+<body>
+
+<div class="login-box">
+<img src="logo.png.jpeg" class="logo-admin">
+<h2>Área Administrativa</h2>
+  <input id="user" placeholder="Usuário">
+  <input id="pass" type="password" placeholder="Senha">
+
+  <button onclick="login()">Entrar</button>
+</div>
+
+<script>
+function login(){
+  if(user.value === "admin" && pass.value === "1234"){
+    localStorage.setItem("admin","ok");
+    location.href = "painel.html";
+  } else {
+    alert("Login inválido");
+  }
+}
+</script>
+
+</body>
+</html>
