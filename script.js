@@ -1,8 +1,13 @@
-let produtos = JSON.parse(localStorage.getItem("produtos")) || {
-  banana:{nome:"Banana Prata",precos:{Kg:5.5,Un:1.2,Dz:12,Cx:45}},
-  maca:{nome:"Maçã Gala",precos:{Kg:8.9,Un:2.2,Dz:22}},
-  tomate:{nome:"Tomate",precos:{Kg:6.5,Cx:52}}
-};
+let produtos = JSON.parse(localStorage.getItem("produtos"));
+
+if (!produtos || Object.keys(produtos).length === 0) {
+  produtos = {
+    banana:{nome:"Banana Prata",precos:{Kg:5.5,Un:1.2,Dz:12,Cx:45}},
+    maca:{nome:"Maçã Gala",precos:{Kg:8.9,Un:2.2,Dz:22}},
+    tomate:{nome:"Tomate",precos:{Kg:6.5,Cx:52}}
+  };
+  localStorage.setItem("produtos", JSON.stringify(produtos));
+}
 
 let carrinho = {};
 const area = document.getElementById("produtos");
@@ -131,3 +136,4 @@ modal.onclick = e => e.target.id === "modal" && fecharCarrinho();
 document.addEventListener("keydown", e => {
   if (e.key === "Escape") fecharCarrinho();
 });
+
