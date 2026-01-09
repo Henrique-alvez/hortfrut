@@ -179,4 +179,57 @@ header {
   background: #2e7d32;
 }
 
+/* MOBILE */
+@media (max-width: 600px) {
+
+  header, .topo {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .logo {
+    height: 50px;
+  }
+
+  #produtos {
+    grid-template-columns: 1fr;
+    padding: 15px;
+  }
+
+  .produto {
+    padding: 18px;
+  }
+
+  .controle button {
+    padding: 10px 18px;
+    font-size: 18px;
+  }
+
+  .cart {
+    bottom: 15px;
+    right: 15px;
+    padding: 16px 20px;
+    font-size: 18px;
+  }
+
+  .box {
+    width: 92%;
+    max-height: 90vh;
+    border-radius: 18px;
+  }
+
+  .box input,
+  .box select,
+  .box button {
+    font-size: 16px;
+  }
+
+  .fechar {
+    width: 36px;
+    height: 36px;
+    font-size: 18px;
+  }
+
+}
+
 
