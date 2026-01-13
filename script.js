@@ -1,73 +1,37 @@
-// GARANTE QUE NÃO USA DADOS ANTIGOS
-localStorage.removeItem("produtos");
-
 let produtos = {};
 let carrinho = {};
 
-const area = document.getElementById("produtos");
+const API_KEY = "AIzaSyC54WUG4EqN3mFkYuEhpZbrzQoKatFf4pc";
+const SHEET_ID = "1lKBi3XyQ0EqvXjU42w9vz_5AnNKJKrFvGQYOCRPPkWQ";
+const RANGE = "produtos!A2:G";
 
-/* CARREGAR PRODUTOS DO JSON (SEM CACHE) */
-fetch("produtos.json?v=" + new Date().getTime())
-  .then(res => {
-    if (!res.ok) throw new Error("JSON não encontrado");
-    return res.json();
-  })
+const url = `https://sheets.googleapis.com/v4/spreadsheets/${SHEET_ID}/values/${RANGE}?key=${API_KEY}`;
+
+fetch(url)
+  .then(res => res.json())
   .then(data => {
-    produtos = data;
+    if (!data.values) throw new Error("Planilha vazia");
+
+    data.values.forEach(linha => {
+      const [id, nome, kg, un, dz, cx, ativo] = linha;
+
+      if (!id || ativo !== "sim") return;
+
+      produtos[id] = {
+        nome,
+        precos: {}
+      };
+
+      if (kg) produtos[id].precos.Kg = Number(kg);
+      if (un) produtos[id].precos.Un = Number(un);
+      if (dz) produtos[id].precos.Dz = Number(dz);
+      if (cx) produtos[id].precos.Cx = Number(cx);
+    });
+
     renderProdutos();
   })
   .catch(err => {
     console.error(err);
-    area.innerHTML = "<p>Erro ao carregar produtos</p>";
+    document.getElementById("produtos").innerHTML =
+      "<p style='color:red'>Erro ao carregar produtos</p>";
   });
-
-function renderProdutos(){
-  area.innerHTML = "";
-
-  for (let id in produtos){
-    const p = produtos[id];
-
-    area.innerHTML += `
-      <div class="produto">
-        <h3>${p.nome}</h3>
-
-        <select id="u-${id}" onchange="atualizarPreco('${id}')">
-          ${Object.keys(p.precos).map(u=>`<option>${u}</option>`).join("")}
-        </select>
-
-        <p class="preco" id="p-${id}"></p>
-
-        <div class="controle">
-          <button onclick="alterarQtd('${id}',-1)">−</button>
-          <span id="q-${id}">0</span>
-          <button onclick="alterarQtd('${id}',1)">+</button>
-        </div>
-      </div>
-    `;
-
-    atualizarPreco(id);
-  }
-}
-
-function atualizarPreco(id){
-  const u = document.getElementById("u-"+id).value;
-  document.getElementById("p-"+id).innerText =
-    "R$ " + produtos[id].precos[u].toFixed(2);
-}
-
-function alterarQtd(id, d){
-  const u = document.getElementById("u-"+id).value;
-  const key = id + "-" + u;
-
-  carrinho[key] ??= { id, u, q: 0 };
-  carrinho[key].q = Math.max(0, carrinho[key].q + d);
-
-  document.getElementById("q-"+id).innerText =
-    Object.values(carrinho).filter(i => i.id === id).reduce((s,i)=>s+i.q,0);
-
-  document.getElementById("cartCount").innerText =
-    Object.values(carrinho).reduce((s,i)=>s+i.q,0);
-}
-
-
-
