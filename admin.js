@@ -1,80 +1,37 @@
+// ===== PROTEÇÃO DO ADMIN =====
 if (localStorage.getItem("admin") !== "ok") {
-  location.href = "admin.html";
+  window.location.href = "login.html";
 }
 
-let produtos = JSON.parse(localStorage.getItem("produtos")) || {};
-let editando = null;
+// ===== LINK DA PLANILHA (EDITÁVEL) =====
+const SHEET_EDIT =
+  "https://docs.google.com/spreadsheets/d/1lKBi3XyQ0EqvXjU42w9vz_5AnNKJKrFvGQYOCRPPkWQ/edit";
 
-const lista = document.getElementById("lista");
+// ===== LINK DO CSV (SITE USA ESSE) =====
+const SHEET_CSV =
+  "https://docs.google.com/spreadsheets/d/e/2PACX-1vRmhL8hBgWNEZQ9_-rnyr5GSph5ixlpmC4kZAln-wFxIXjCSFySGTbUa0BfpSV3DoScj57e2oCR-wDK/pub?output=csv";
 
-function salvar(){
-  if(!nome.value) return alert("Informe o nome");
-
-  const id = editando || nome.value.toLowerCase().replace(/\s+/g,"-");
-
-  produtos[id] = {
-    nome: nome.value,
-    precos: {}
-  };
-
-  if(kg.value) produtos[id].precos.Kg = +kg.value;
-  if(un.value) produtos[id].precos.Un = +un.value;
-  if(dz.value) produtos[id].precos.Dz = +dz.value;
-  if(cx.value) produtos[id].precos.Cx = +cx.value;
-
-  localStorage.setItem("produtos", JSON.stringify(produtos));
-  limpar();
-  render();
+// ===== ABRIR PLANILHA =====
+function abrirPlanilha() {
+  window.open(SHEET_EDIT, "_blank");
 }
 
-function render(){
-  lista.innerHTML = "";
-
-  for(let id in produtos){
-    const p = produtos[id];
-    lista.innerHTML += `
-      <div class="card">
-        <div>
-          <strong>${p.nome}</strong><br>
-          <small>
-            ${Object.entries(p.precos).map(([u,v])=>`${u}: R$ ${v}`).join(" | ")}
-          </small>
-        </div>
-        <div>
-          <button class="edit" onclick="editar('${id}')">Editar</button>
-          <button class="del" onclick="excluir('${id}')">Excluir</button>
-        </div>
-      </div>
-    `;
-  }
-}
-
-function editar(id){
-  const p = produtos[id];
-  editando = id;
-  nome.value = p.nome;
-  kg.value = p.precos.Kg || "";
-  un.value = p.precos.Un || "";
-  dz.value = p.precos.Dz || "";
-  cx.value = p.precos.Cx || "";
-}
-
-function excluir(id){
-  if(confirm("Excluir produto?")){
-    delete produtos[id];
-    localStorage.setItem("produtos", JSON.stringify(produtos));
-    render();
-  }
-}
-
-function limpar(){
-  nome.value = kg.value = un.value = dz.value = cx.value = "";
-  editando = null;
-}
-
-function logout(){
+// ===== LOGOUT =====
+function logout() {
   localStorage.removeItem("admin");
-  location.href = "admin.html";
+  window.location.href = "login.html";
 }
 
-render();
+// ===== TESTE DE CONEXÃO COM CSV =====
+async function testarCSV() {
+  try {
+    const r = await fetch(SHEET_CSV, { cache: "no-store" });
+    if (!r.ok) throw new Error("Falha no CSV");
+    console.log("✅ Planilha conectada com sucesso");
+  } catch (e) {
+    alert("Erro ao conectar com a planilha");
+    console.error(e);
+  }
+}
+
+testarCSV();
