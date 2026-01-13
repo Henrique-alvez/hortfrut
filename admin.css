@@ -1,120 +1,182 @@
-body {
-  margin:0;
-  font-family:Arial;
-  background:#0f1f14;
-  color:#fff;
+/* ===== RESET E BASE ===== */
+* {
+  box-sizing: border-box;
+  font-family: "Segoe UI", Arial, sans-serif;
 }
 
+body {
+  margin: 0;
+  background: linear-gradient(180deg, #0f1f14, #0b1a11);
+  color: #fff;
+}
+
+/* ===== LOGIN ===== */
 .login-box {
-  max-width:320px;
-  margin:120px auto;
-  background:#1b5e20;
-  padding:25px;
-  border-radius:16px;
-  text-align:center;
+  max-width: 360px;
+  margin: 120px auto;
+  background: #143d27;
+  padding: 32px;
+  border-radius: 18px;
+  text-align: center;
+  box-shadow: 0 20px 40px rgba(0,0,0,.5);
+}
+
+.login-box h2 {
+  margin-bottom: 22px;
+  font-weight: 600;
 }
 
 .login-box input {
-  width:100%;
-  padding:12px;
-  margin:8px 0;
-  border-radius:10px;
-  border:0;
+  width: 100%;
+  padding: 14px;
+  margin: 10px 0;
+  border-radius: 12px;
+  border: none;
+  outline: none;
 }
 
 .login-box button {
-  width:100%;
-  padding:12px;
-  background:#25d366;
-  border:0;
-  border-radius:12px;
-  font-size:16px;
-  color:#fff;
-  cursor:pointer;
+  width: 100%;
+  padding: 14px;
+  margin-top: 12px;
+  background: linear-gradient(135deg, #25d366, #1faa55);
+  border: none;
+  border-radius: 14px;
+  font-size: 16px;
+  color: #fff;
+  cursor: pointer;
 }
 
+#msg {
+  margin-top: 12px;
+  color: #ffb3b3;
+}
+
+/* ===== TOPO / HEADER ===== */
 .top {
-  background:#1b5e20;
-  padding:15px;
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-}
-
-.top button {
-  background:#c62828;
-  color:#fff;
-  border:0;
-  padding:8px 14px;
-  border-radius:8px;
-  cursor:pointer;
-}
-
-.container {
-  max-width:900px;
-  margin:auto;
-  padding:20px;
-}
-
-.container input {
-  width:100%;
-  padding:12px;
-  margin:6px 0;
-  border-radius:10px;
-  border:0;
-}
-
-.grid {
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(120px,1fr));
-  gap:10px;
-}
-
-.container button {
-  padding:14px;
-  width:100%;
-  margin-top:10px;
-  border-radius:14px;
-  border:0;
-  background:#25d366;
-  font-size:16px;
-  color:#fff;
-  cursor:pointer;
-}
-
-.card {
-  background:#1c1c1c;
-  padding:15px;
-  border-radius:14px;
-  margin-top:10px;
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-}
-
-.card button {
-  margin-left:5px;
-  padding:6px 10px;
-  border-radius:8px;
-  border:0;
-  cursor:pointer;
-}
-
-.card .edit { background:#ff9800; }
-.card .del { background:#c62828; color:#fff; }
-
-.logo-admin {
-  max-width:140px;
-  margin-bottom:15px;
+  background: linear-gradient(135deg, #1b5e20, #2e7d32);
+  padding: 16px 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 6px 20px rgba(0,0,0,.4);
 }
 
 .brand {
-  display:flex;
-  align-items:center;
-  gap:12px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
 }
 
 .brand img {
-  height:45px;
+  height: 46px;
 }
+
+.top button {
+  background: #c62828;
+  color: #fff;
+  border: none;
+  padding: 10px 16px;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+/* ===== CONTAINER ===== */
+.container {
+  max-width: 1100px;
+  margin: auto;
+  padding: 32px 20px;
+}
+
+.container h2 {
+  margin-bottom: 12px;
+  font-weight: 600;
+}
+
+.container input {
+  width: 100%;
+  padding: 14px;
+  margin: 8px 0;
+  border-radius: 12px;
+  border: none;
+}
+
+/* ===== GRID DE CAMPOS ===== */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 12px;
+}
+
+/* ===== BOTÕES ===== */
+.container button {
+  padding: 14px;
+  width: 100%;
+  margin-top: 14px;
+  border-radius: 14px;
+  border: none;
+  background: linear-gradient(135deg, #25d366, #1faa55);
+  font-size: 16px;
+  color: #fff;
+  cursor: pointer;
+}
+
+/* ===== CARDS DE PRODUTO ===== */
+.card {
+  background: #121212;
+  padding: 18px;
+  border-radius: 16px;
+  margin-top: 14px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  box-shadow: 0 10px 25px rgba(0,0,0,.45);
+}
+
+.card strong {
+  display: block;
+  font-size: 15px;
+}
+
+.card span {
+  font-size: 13px;
+  opacity: .8;
+}
+
+.card button {
+  padding: 8px 12px;
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
+}
+
+.card .edit {
+  background: #ff9800;
+  color: #000;
+}
+
+.card .del {
+  background: #c62828;
+  color: #fff;
+}
+
+/* ===== LOGO ===== */
+.logo-admin {
+  max-width: 160px;
+  margin-bottom: 20px;
+}
+
+/* ===== RESPONSIVO ===== */
+@media (min-width: 900px) {
+  .login-box {
+    margin-top: 160px;
+  }
+
+  .grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+
 
