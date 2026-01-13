@@ -5,7 +5,8 @@ const API_KEY = "AIzaSyC54WUG4EqN3mFkYuEhpZbrzQoKatFf4pc";
 const SHEET_ID = "1lKBi3XyQ0EqvXjU42w9vz_5AnNKJKrFvGQYOCRPPkWQ";
 const RANGE = "produtos!A2:G";
 
-const url = `https://sheets.googleapis.com/v4/spreadsheets/${SHEET_ID}/values/${RANGE}?key=${API_KEY}`;
+const url = `https://sheets.googleapis.com/v4/spreadsheets/1lKBi3XyQ0EqvXjU42w9vz_5AnNKJKrFvGQYOCRPPkWQ/values/produtos!A2:G?key=AIzaSyC54WUG4EqN3mFkYuEhpZbrzQoKatFf4pc
+
 
 fetch(url)
   .then(res => res.json())
@@ -35,3 +36,4 @@ fetch(url)
     document.getElementById("produtos").innerHTML =
       "<p style='color:red'>Erro ao carregar produtos</p>";
   });
+
