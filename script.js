@@ -6,7 +6,8 @@ fetch("https://docs.google.com/spreadsheets/d/e/2PACX-1vRmhL8hBgWNEZQ9_-rnyr5GSp
       const parts = linha.includes(";") ? linha.split(";") : linha.split(",");
       const [id, nome, kg, un, dz, cx, ativo] = parts;
 
-      if (ativo !== "sim") return;
+      if (!ativo || ativo.trim().toLowerCase() !== "sim") return;
+
 
       produtos[id] = {
         nome,
@@ -23,3 +24,4 @@ fetch("https://docs.google.com/spreadsheets/d/e/2PACX-1vRmhL8hBgWNEZQ9_-rnyr5GSp
     document.getElementById("produtos").innerHTML =
       "<p style='color:red;font-weight:bold'>Erro ao carregar produtos</p>";
   });
+
