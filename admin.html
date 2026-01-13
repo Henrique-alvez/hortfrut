@@ -1,30 +1,81 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-<meta charset="UTF-8">
-<title>Admin - Login</title>
-<link rel="stylesheet" href="admin.css">
+  <meta charset="UTF-8">
+  <title>Painel Administrativo</title>
+
+  <!-- RESPONSIVO -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="admin.css">
 </head>
 <body>
 
-<div class="login-box">
-<img src="logo.png.jpeg" class="logo-admin">
-<h2>Área Administrativa</h2>
-  <input id="user" placeholder="Usuário">
-  <input id="pass" type="password" placeholder="Senha">
+<script>
+  /* PROTEÇÃO DO ADMIN */
+  if (localStorage.getItem("admin") !== "ok") {
+    window.location.href = "login.html";
+  }
+</script>
 
-  <button onclick="login()">Entrar</button>
+<!-- TOPO -->
+<div class="top">
+  <div class="brand">
+    <img src="logo.png.jpeg" alt="Logo">
+    <strong>Painel Administrativo</strong>
+  </div>
+  <button onclick="sair()">Sair</button>
+</div>
+
+<!-- CONTEÚDO -->
+<div class="container">
+
+  <h2>Gerenciamento de Produtos</h2>
+  <p>
+    Para adicionar, remover ou alterar preços dos produtos,
+    utilize a planilha oficial do sistema.
+    As alterações aparecem automaticamente no site.
+  </p>
+
+  <!-- BOTÃO PLANILHA -->
+  <a
+    href="https://docs.google.com/spreadsheets/d/1lKBi3XyQ0EqvXjU42w9vz_5AnNKJKrFvGQYOCRPPkWQ/edit"
+    target="_blank"
+    style="
+      display:block;
+      text-align:center;
+      margin:20px 0;
+      padding:16px;
+      background:#25d366;
+      color:#fff;
+      border-radius:14px;
+      text-decoration:none;
+      font-size:16px;
+    "
+  >
+    📊 Abrir Planilha de Produtos
+  </a>
+
+  <!-- DICAS -->
+  <div class="card">
+    <div>
+      <strong>Dicas importantes</strong>
+      <span>
+        • Use <b>sim</b> ou <b>não</b> na coluna <b>ativo</b><br>
+        • Não apague o cabeçalho<br>
+        • Preços devem ser números
+      </span>
+    </div>
+  </div>
+
 </div>
 
 <script>
-function login(){
-  if(user.value === "admin" && pass.value === "1234"){
-    localStorage.setItem("admin","ok");
-    location.href = "painel.html";
-  } else {
-    alert("Login inválido");
+  function sair() {
+    localStorage.removeItem("admin");
+    window.location.href = "login.html";
   }
-}
 </script>
 
 </body>
