@@ -59,3 +59,22 @@ function renderProdutos() {
     `;
   }
 }
+
+let carrinho = [];
+
+function addCarrinho(nome, preco, inputId) {
+  const qtd = Number(document.getElementById(inputId).value);
+
+  if (qtd <= 0) {
+    alert("Quantidade inválida");
+    return;
+  }
+
+  carrinho.push({
+    nome,
+    preco,
+    qtd
+  });
+
+  alert("Produto adicionado ao carrinho");
+}
