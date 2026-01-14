@@ -62,10 +62,11 @@ function renderProdutos() {
 
 let carrinho = [];
 
-function addCarrinho(nome, preco, inputId) {
+// ADICIONAR AO CARRINHO
+function addCarrinho(nome, preco, unidade, inputId) {
   const qtd = Number(document.getElementById(inputId).value);
 
-  if (qtd <= 0) {
+  if (!qtd || qtd <= 0) {
     alert("Quantidade inválida");
     return;
   }
@@ -73,8 +74,84 @@ function addCarrinho(nome, preco, inputId) {
   carrinho.push({
     nome,
     preco,
+    unidade,
     qtd
   });
 
-  alert("Produto adicionado ao carrinho");
+  atualizarContador();
+}
+
+// CONTADOR DO CARRINHO
+function atualizarContador() {
+  const totalItens = carrinho.reduce((s, i) => s + i.qtd, 0);
+  document.getElementById("cartCount").innerText = totalItens;
+}
+
+// ABRIR CARRINHO
+function abrirCarrinho() {
+  const lista = document.getElementById("lista");
+  lista.innerHTML = "";
+
+  let total = 0;
+
+  carrinho.forEach((p, i) => {
+    const valor = p.preco * p.qtd;
+    total += valor;
+
+    lista.innerHTML += `
+      <p>
+        ${p.nome} — ${p.qtd} ${p.unidade}
+        <strong>R$ ${valor.toFixed(2)}</strong>
+        <button onclick="remover(${i})">✕</button>
+      </p>
+    `;
+  });
+
+  document.getElementById("total").innerText =
+    "Total: R$ " + total.toFixed(2);
+
+  document.getElementById("modal").style.display = "flex";
+}
+
+// FECHAR CARRINHO
+function fecharCarrinho() {
+  document.getElementById("modal").style.display = "none";
+}
+
+// REMOVER ITEM
+function remover(i) {
+  carrinho.splice(i, 1);
+  atualizarContador();
+  abrirCarrinho();
+}
+
+// FINALIZAR NO WHATSAPP
+function finalizar() {
+  const nome = document.getElementById("nome").value.trim();
+  const endereco = document.getElementById("endereco").value.trim();
+
+  if (!nome || !endereco) {
+    alert("Preencha nome e endereço");
+    return;
+  }
+
+  let texto = `🛒 Pedido - Hortifruti\n`;
+  texto += `👤 Cliente: ${nome}\n`;
+  texto += `📍 Endereço: ${endereco}\n\n`;
+  texto += `Itens:\n`;
+
+  let total = 0;
+
+  carrinho.forEach(p => {
+    const v = p.preco * p.qtd;
+    total += v;
+    texto += `- ${p.nome} (${p.qtd} ${p.unidade}) R$ ${v.toFixed(2)}\n`;
+  });
+
+  texto += `\n💰 Total: R$ ${total.toFixed(2)}`;
+
+  const msg = encodeURIComponent(texto);
+  const telefone = "5511942718355"; // SEU NÚMERO
+
+  window.open(`https://wa.me/${telefone}?text=${msg}`, "_blank");
 }
