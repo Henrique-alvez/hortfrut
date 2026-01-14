@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>Login Admin</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="admin.css">
+</head>
+<body>
+
+<div class="login-box">
+  <img src="logo.png" class="logo-admin">
+  <h2>Área Administrativa</h2>
+
+  <input id="user" placeholder="Usuário">
+  <input id="pass" type="password" placeholder="Senha">
+
+  <button onclick="login()">Entrar</button>
+</div>
+
+<script>
+function login() {
+  if (user.value === "admin" && pass.value === "1234") {
+    localStorage.setItem("admin", "ok");
+    location.href = "admin.html";
+  } else {
+    alert("Usuário ou senha inválidos");
+  }
+}
+</script>
+
+</body>
+</html>
