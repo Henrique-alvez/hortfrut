@@ -28,8 +28,13 @@ function login() {
     alert("Usuário ou senha inválidos");
   }
 }
+    function sair() {
+    localStorage.removeItem("login");
+    window.location.href = "index.html";
+  }
 </script>
 
 </body>
 </html>
+
 
