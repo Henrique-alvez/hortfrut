@@ -30,7 +30,8 @@ fetch(URL_CSV)
 
 function renderProdutos(){
   const area = document.getElementById("produtos");
-  area.innerHTML = "";
+  area.innerHTML = "";atualizarPreco(id);
+
 
   for(const id in produtos){
     const p = produtos[id];
@@ -52,7 +53,6 @@ function renderProdutos(){
       </div>
     `;
 
-    atualizarPreco(id);
   }
 }
 
@@ -108,4 +108,5 @@ function abrirCarrinho(){
 function fecharCarrinho(){
   document.getElementById("modal").style.display="none";
 }
+
 
