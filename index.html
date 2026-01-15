@@ -15,28 +15,24 @@
     <p>Direto da horta para sua casa</p>
   </div>
 </header>
-<div id="produtos"></div>
 
 <script src="script.js"></script>
+<div id="produtos"></div>
 
-
+<!-- carrinho flutuante -->
 <div class="cart" onclick="abrirCarrinho()">
   🛒 <span id="cartCount">0</span>
 </div>
 
-<!-- MODAL DO CARRINHO -->
+<!-- modal do carrinho -->
 <div id="modal" class="modal">
   <div class="box">
     <button class="fechar" onclick="fecharCarrinho()">✕</button>
-
     <h2>Seu Pedido</h2>
-
     <div id="lista"></div>
     <p id="total"></p>
-
     <input id="nome" placeholder="Seu nome">
     <input id="endereco" placeholder="Endereço">
-
     <button onclick="finalizar()">Finalizar no WhatsApp</button>
   </div>
 </div>
@@ -45,19 +41,11 @@
   <a href="admin.html" class="admin-btn" title="Painel Admin">
   ⚙️
 </a>
-  <div class="produto">
-  <h3>Banana Prata</h3>
-
-  <input type="number" min="1" value="1" id="q-banana">
-
-  <button onclick="addCarrinho('Banana Prata', 5.5, 'q-banana')">
-    Adicionar ao carrinho
-  </button>
-</div>
-
+  
 
 </body>
 </html>
+
 
 
 
