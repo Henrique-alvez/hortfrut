@@ -57,10 +57,18 @@ function renderProdutos(){
 }
 
 function atualizarPreco(id){
-  const u = document.getElementById("u-"+id).value;
-  document.getElementById("preco-"+id).innerText =
-    "R$ " + produtos[id].precos[u].toFixed(2) + " / " + u;
+  const select = document.getElementById("u-"+id);
+  if (!select) return;
+
+  const u = select.value;
+  const preco = produtos[id].precos[u];
+
+  document.getElementById("preco-"+id).innerHTML = `
+    <strong>R$ ${preco.toFixed(2)}</strong>
+    <span style="opacity:.7"> / ${u}</span>
+  `;
 }
+
 
 function addCarrinho(id){
   const u = document.getElementById("u-"+id).value;
@@ -100,3 +108,4 @@ function abrirCarrinho(){
 function fecharCarrinho(){
   document.getElementById("modal").style.display="none";
 }
+
