@@ -135,4 +135,12 @@ function finalizar() {
     "_blank"
   );
 }
+fetch(CSV_URL)
+  .then(r => r.text())
+  .then(csv => {
+    console.log("CSV BRUTO:");
+    console.log(csv);
+  })
+  .catch(err => console.error(err));
+
 
