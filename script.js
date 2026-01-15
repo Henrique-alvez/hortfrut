@@ -3,15 +3,27 @@ const CSV_URL =
 
 let carrinho = [];
 
-// ===== CARREGAR PRODUTOS =====
 fetch(CSV_URL)
   .then(r => r.text())
   .then(csv => {
-    const linhas = csv.trim().split("\n").slice(1);
-    const area = document.getElementById("produtos");
+    const linhas = csv.trim().split("\n");
+    const header = linhas.shift(); // remove cabeçalho
 
-    linhas.forEach(l => {
-      const [id, nome, preco, unidade, ativo] = l.split(",");
+    const area = document.getElementById("produtos");
+    area.innerHTML = "";
+
+    linhas.forEach(linha => {
+      // SUPORTE A ; OU ,
+      const col = linha.includes(";")
+        ? linha.split(";")
+        : linha.split(",");
+
+      if (col.length < 5) return;
+
+      let [id, nome, preco, unidade, ativo] = col.map(v => v.trim());
+
+      // remove \r escondido
+      ativo = ativo.replace("\r", "").toLowerCase();
 
       if (ativo !== "sim") return;
 
@@ -39,7 +51,8 @@ fetch(CSV_URL)
       `;
     });
   })
-  .catch(() => {
+  .catch(err => {
+    console.error(err);
     document.getElementById("produtos").innerHTML =
       "<p>Erro ao carregar produtos</p>";
   });
@@ -97,7 +110,7 @@ function remover(i) {
 }
 
 function finalizar() {
-  const nome = nomeCliente.value || document.getElementById("nome").value;
+  const nome = document.getElementById("nome").value;
   const endereco = document.getElementById("endereco").value;
 
   if (!nome || !endereco) {
@@ -117,7 +130,7 @@ function finalizar() {
   texto += `\nTotal: R$ ${total.toFixed(2)}`;
 
   window.open(
-    `https://wa.me/5511942718355?text=${encodeURIComponent(texto)}`,
+    `https://wa.me/5511999999999?text=${encodeURIComponent(texto)}`,
     "_blank"
   );
 }
