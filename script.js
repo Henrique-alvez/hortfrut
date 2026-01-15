@@ -4,94 +4,99 @@ let produtos = {};
 let carrinho = {};
 
 fetch(URL_CSV)
-  .then(res => res.text())
-  .then(texto => {
-    const linhas = texto.trim().split("\n");
-    const cabecalho = linhas.shift().split(",");
+  .then(r => r.text())
+  .then(csv => {
+    const linhas = csv.trim().split("\n");
+    const headers = linhas.shift().split(",");
 
-    linhas.forEach(linha => {
-      const dados = linha.split(",");
+    linhas.forEach(l => {
+      const cols = l.split(",");
+      const row = {};
+      headers.forEach((h,i)=> row[h.trim()] = cols[i]?.trim());
 
-      const obj = {};
-      cabecalho.forEach((c, i) => obj[c.trim()] = dados[i]?.trim());
-
-      produtos[obj.id] = {
-        nome: obj.nome,
+      produtos[row.id] = {
+        nome: row.nome,
         precos: {
-          Kg: obj.kg ? Number(obj.kg) : null,
-          Un: obj.un ? Number(obj.un) : null,
-          Dz: obj.dz ? Number(obj.dz) : null,
-          Cx: obj.cx ? Number(obj.cx) : null,
+          Kg: row.kg ? +row.kg : null,
+          Un: row.un ? +row.un : null,
+          Dz: row.dz ? +row.dz : null,
+          Cx: row.cx ? +row.cx : null
         }
       };
     });
 
     renderProdutos();
-  })
-  .catch(err => {
-    console.error("ERRO AO CARREGAR PRODUTOS", err);
   });
 
-function renderProdutos() {
+function renderProdutos(){
   const area = document.getElementById("produtos");
   area.innerHTML = "";
 
-  for (let id in produtos) {
+  for(const id in produtos){
     const p = produtos[id];
-    const unidades = Object.entries(p.precos).filter(e => e[1]);
+    const unidades = Object.entries(p.precos).filter(u => u[1]);
 
     area.innerHTML += `
       <div class="produto">
         <h3>${p.nome}</h3>
 
-        <select id="u-${id}">
-          ${unidades.map(([u]) => `<option>${u}</option>`).join("")}
+        <select id="u-${id}" onchange="atualizarPreco('${id}')">
+          ${unidades.map(u=>`<option value="${u[0]}">${u[0]}</option>`).join("")}
         </select>
+
+        <p class="preco" id="preco-${id}"></p>
 
         <input type="number" min="1" value="1" id="q-${id}">
 
         <button onclick="addCarrinho('${id}')">Adicionar</button>
       </div>
     `;
+
+    atualizarPreco(id);
   }
 }
 
-function addCarrinho(id) {
-  const u = document.getElementById("u-" + id).value;
-  const q = Number(document.getElementById("q-" + id).value);
+function atualizarPreco(id){
+  const u = document.getElementById("u-"+id).value;
+  document.getElementById("preco-"+id).innerText =
+    "R$ " + produtos[id].precos[u].toFixed(2) + " / " + u;
+}
 
-  const chave = id + "-" + u;
+function addCarrinho(id){
+  const u = document.getElementById("u-"+id).value;
+  const q = +document.getElementById("q-"+id).value;
 
-  if (!carrinho[chave]) {
-    carrinho[chave] = { id, u, q: 0 };
-  }
+  const key = id + "-" + u;
+  if(!carrinho[key]) carrinho[key] = {id,u,q:0};
 
-  carrinho[chave].q += q;
+  carrinho[key].q += q;
 
   document.getElementById("cartCount").innerText =
-    Object.values(carrinho).reduce((s, i) => s + i.q, 0);
+    Object.values(carrinho).reduce((s,i)=>s+i.q,0);
 }
 
-function abrirCarrinho() {
+function abrirCarrinho(){
   const lista = document.getElementById("lista");
   lista.innerHTML = "";
   let total = 0;
 
-  for (let k in carrinho) {
+  for(const k in carrinho){
     const c = carrinho[k];
     const p = produtos[c.id];
     const valor = p.precos[c.u] * c.q;
     total += valor;
 
-    lista.innerHTML += `<p>${p.nome} - ${c.q} ${c.u} (R$ ${valor.toFixed(2)})</p>`;
+    lista.innerHTML += `
+      <p>${p.nome} – ${c.q} ${c.u} = R$ ${valor.toFixed(2)}</p>
+    `;
   }
 
   document.getElementById("total").innerText =
-    "Total R$ " + total.toFixed(2);
+    "TOTAL: R$ " + total.toFixed(2);
 
-  document.getElementById("modal").style.display = "flex";
+  document.getElementById("modal").style.display="flex";
 }
 
-function fecharCarrinho() {
-  document.getElementById("modal").style.display = "none";
+function fecharCarrinho(){
+  document.getElementById("modal").style.display="none";
 }
