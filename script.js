@@ -1,3 +1,4 @@
+alert("SCRIPT CARREGOU");
 const CSV_URL =
   "https://docs.google.com/spreadsheets/d/e/2PACX-1vRmhL8hBgWNEZQ9_-rnyr5GSph5ixlpmC4kZAln-wFxIXjCSFySGTbUa0BfpSV3DoScj57e2oCR-wDK/pub?output=csv";
 
@@ -134,3 +135,4 @@ function finalizar() {
     "_blank"
   );
 }
+
