@@ -135,7 +135,7 @@ function finalizar() {
   texto += `\nTotal: R$ ${total.toFixed(2)}`;
 
   window.open(
-    `https://wa.me/5511942718355?text=${encodeURIComponent(texto)}`,
+    `https://wa.me/5511999999999?text=${encodeURIComponent(texto)}`,
     "_blank"
   );
 }
