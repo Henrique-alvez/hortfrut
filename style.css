@@ -402,7 +402,7 @@ function addCarrinho(id) {
   border-radius: 10px;
   border: 2px solid #6699CC;
   background: #000;
-  color: #6699CC;
+  color: #73C883;
   margin: 8px 0 10px;
   box-sizing: border-box;
 }
@@ -413,6 +413,7 @@ function addCarrinho(id) {
   outline: none;
   box-shadow: 0 0 0 2px rgba(102,153,204,.35);
 }
+
 
 
 
