@@ -93,13 +93,21 @@ function addCarrinho(id) {
   const u = document.getElementById("u-" + id).value;
   const q = Number(document.getElementById("q-" + id).value);
 
+  if (q <= 0) return;
+
   const key = id + "-" + u;
   if (!carrinho[key]) carrinho[key] = { id, u, q: 0 };
 
   carrinho[key].q += q;
 
-  document.getElementById("cartCount").innerText =
-    Object.values(carrinho).reduce((s, i) => s + i.q, 0);
+  const count = Object.values(carrinho).reduce((s, i) => s + i.q, 0);
+  const cart = document.querySelector(".cart");
+
+  document.getElementById("cartCount").innerText = count;
+
+  // animação
+  cart.classList.add("pulse");
+  setTimeout(() => cart.classList.remove("pulse"), 400);
 }
 
 function abrirCarrinho() {
@@ -158,5 +166,6 @@ function fecharCarrinho() {
 
   window.open(url, "_blank");
 }
+
 
 
