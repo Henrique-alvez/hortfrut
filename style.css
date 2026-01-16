@@ -371,9 +371,10 @@ function addCarrinho(id) {
   border-radius: 10px;
   border: none;
   margin: 8px 0 10px;
-  background: #6699CC;
-  color: ##6699CC;
+  background: #111;
+  color: #708090;
 }
+
 
 
 
