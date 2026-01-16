@@ -334,3 +334,24 @@ header {
   animation: pulse .4s ease;
 }
 
+
+function addCarrinho(id) {
+  const u = document.getElementById("u-" + id).value;
+  const q = Number(document.getElementById("q-" + id).value);
+
+  if (q <= 0) return;
+
+  const key = id + "-" + u;
+  if (!carrinho[key]) carrinho[key] = { id, u, q: 0 };
+
+  carrinho[key].q += q;
+
+  const count = Object.values(carrinho).reduce((s, i) => s + i.q, 0);
+  const cart = document.querySelector(".cart");
+
+  document.getElementById("cartCount").innerText = count;
+
+  // animação
+  cart.classList.add("pulse");
+  setTimeout(() => cart.classList.remove("pulse"), 400);
+}
