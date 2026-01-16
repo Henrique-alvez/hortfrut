@@ -374,16 +374,14 @@ function addCarrinho(id) {
   background: #111;
   color: #FFF;
 }
-
-
 /* SELECT (UN, KG, DZ, CX) */
 .produto-card select {
   width: 100%;
   padding: 10px;
   border-radius: 10px;
-  border: 2px solid #6699CC;
+  border: 2px solid #4CAF50;
   background: #000;
-  color: #6699CC;
+  color: #4CAF50;
   font-weight: 600;
   margin-bottom: 8px;
   box-sizing: border-box;
@@ -400,9 +398,9 @@ function addCarrinho(id) {
   font-weight: 600;
   text-align: center;
   border-radius: 10px;
-  border: 2px solid #6699CC;
+  border: 2px solid #4CAF50;
   background: #000;
-  color: #73C883;
+  color: #4CAF50;
   margin: 8px 0 10px;
   box-sizing: border-box;
 }
@@ -411,18 +409,5 @@ function addCarrinho(id) {
 .produto-card select:focus,
 .produto-card input[type="number"]:focus {
   outline: none;
-  box-shadow: 0 0 0 2px rgba(102,153,204,.35);
+  box-shadow: 0 0 0 2px rgba(76,175,80,.35);
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
