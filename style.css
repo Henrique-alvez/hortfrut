@@ -290,7 +290,7 @@ header {
 
 .produto-card select,
 .produto-card input[type="number"] {
-  width: 100%;
+  width: 80%;
   padding: 14px;
   font-size: 16px;
   border-radius: 14px;
@@ -364,6 +364,7 @@ function addCarrinho(id) {
   background: #111;
   color: #fff;
 }
+
 
 
 
