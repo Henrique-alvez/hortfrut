@@ -354,8 +354,8 @@ function addCarrinho(id) {
   setTimeout(() => cart.classList.remove("pulse"), 400);
 }.produto-card input[type="number"] {
   width: 100%;
-  height: 40px;        /* ⬅ menor */
-  font-size: 16px;    /* ⬅ mais compacto */
+  height: 35px;        /* ⬅ menor */
+  font-size: 13px;    /* ⬅ mais compacto */
   font-weight: 600;
   text-align: center;
   border-radius: 12px;
@@ -364,4 +364,5 @@ function addCarrinho(id) {
   background: #111;
   color: #fff;
 }
+
 
