@@ -289,15 +289,13 @@ header {
 }
 
 .produto-card select,
-.produto-card input {
+.produto-card input[type="number"] {
   width: 100%;
-  padding: 12px;
-  border-radius: 12px;
+  padding: 14px;
+  font-size: 16px;
+  border-radius: 14px;
   border: none;
-  margin-bottom: 10px;
-  font-size: 15px;
-  background: #1f1f1f;
-  color: #fff;
+  text-align: center;
 }
 
 .produto-card .preco {
@@ -325,3 +323,4 @@ header {
   transform: translateY(-2px);
   box-shadow: 0 10px 22px rgba(0,0,0,.4);
 }
+
