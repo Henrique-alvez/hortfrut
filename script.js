@@ -125,4 +125,38 @@ function abrirCarrinho() {
 
 function fecharCarrinho() {
   document.getElementById("modal").style.display = "none";
+}function finalizar() {
+  const nome = document.getElementById("nome").value.trim();
+  const endereco = document.getElementById("endereco").value.trim();
+
+  if (!nome || !endereco) {
+    alert("Preencha nome e endereço");
+    return;
+  }
+
+  let texto = `🛒 *Pedido - Hortifruti*\n\n`;
+  texto += `👤 Cliente: ${nome}\n`;
+  texto += `📍 Endereço: ${endereco}\n\n`;
+  texto += `🥬 *Itens do pedido:*\n`;
+
+  let total = 0;
+
+  Object.values(carrinho).forEach(c => {
+    const p = produtos[c.id];
+    const valor = p.precos[c.u] * c.q;
+    total += valor;
+
+    texto += `• ${p.nome} — ${c.q} ${c.u} → R$ ${valor.toFixed(2)}\n`;
+  });
+
+  texto += `\n💰 *Total:* R$ ${total.toFixed(2)}`;
+
+  const mensagem = encodeURIComponent(texto);
+
+  const telefone = "5511942718355"; // 🔴 COLOQUE SEU NÚMERO AQUI
+  const url = `https://wa.me/${telefone}?text=${mensagem}`;
+
+  window.open(url, "_blank");
 }
+
+
