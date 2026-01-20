@@ -188,7 +188,7 @@ header {
   }
 
   .logo {
-    height: 50px;
+    height: 90px;
   }
 
   #produtos {
@@ -430,6 +430,7 @@ function addCarrinho(id) {
     height: 60px;
   }
 }
+
 
 
 
