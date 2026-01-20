@@ -410,4 +410,19 @@ function addCarrinho(id) {
 .produto-card input[type="number"]:focus {
   outline: none;
   box-shadow: 0 0 0 2px rgba(76,175,80,.35);
+} 
+                                       /*logo pc*/
+                                       
+header img {
+  height: 72px;
+  max-width: 100%;
+  object-fit: contain;
 }
+                        /*logo mobile*/               
+ @media (max-width: 768px) {
+  header img {
+    height: 58px;
+  }
+}
+
+
