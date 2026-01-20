@@ -413,17 +413,20 @@ function addCarrinho(id) {
 } 
                                        /*logo pc*/
                                        
-header img {
-  height: 72px;
+.logo {
+  height: 70px;        /* aumenta */
   max-width: 100%;
   object-fit: contain;
 }
+
                         /*logo mobile*/               
  @media (max-width: 768px) {
-  header img {
-    height: 100px;
+  .logo {
+    height: 56px;
   }
 }
+
+
 
 
 
