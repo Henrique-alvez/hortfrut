@@ -153,7 +153,7 @@ header {
 }
 
 .logo {
-  height:60px;
+  height:80px;
   width:auto;
   object-fit:contain;
 }
@@ -430,6 +430,7 @@ function addCarrinho(id) {
     height: 60px;
   }
 }
+
 
 
 
