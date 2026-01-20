@@ -188,7 +188,7 @@ header {
   }
 
   .logo {
-    height: 150px;
+    height: 120px;
   }
 
   #produtos {
@@ -412,6 +412,7 @@ function addCarrinho(id) {
   box-shadow: 0 0 0 2px rgba(76,175,80,.35);
 } 
    
+
 
 
 
