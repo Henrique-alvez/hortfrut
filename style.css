@@ -421,9 +421,10 @@ header img {
                         /*logo mobile*/               
  @media (max-width: 768px) {
   header img {
-    height: 70px;
+    height: 100px;
   }
 }
+
 
 
 
