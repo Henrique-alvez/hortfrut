@@ -417,19 +417,6 @@ function addCarrinho(id) {
   padding: 12px 20px;
 }
 
-/* LOGO */
-.topo .logo {
-  height: 80px;          /* ⬅ aumenta bem */
-  max-width: 100%;
-  object-fit: contain;
-}
-
-/* AJUSTE PARA CELULAR */
-@media (max-width: 768px) {
-  .topo .logo {
-    height: 60px;
-  }
-}
 
 
 
