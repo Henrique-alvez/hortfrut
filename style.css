@@ -411,20 +411,26 @@ function addCarrinho(id) {
   outline: none;
   box-shadow: 0 0 0 2px rgba(76,175,80,.35);
 } 
-                                       /*logo pc*/
-                                       
-.logo {
-  height: 70px;        /* aumenta */
+    .topo {
+  display: flex;
+  align-items: center;
+  padding: 12px 20px;
+}
+
+/* LOGO */
+.topo .logo {
+  height: 80px;          /* ⬅ aumenta bem */
   max-width: 100%;
   object-fit: contain;
 }
 
-                        /*logo mobile*/               
- @media (max-width: 768px) {
-  .logo {
-    height: 56px;
+/* AJUSTE PARA CELULAR */
+@media (max-width: 768px) {
+  .topo .logo {
+    height: 60px;
   }
 }
+
 
 
 
